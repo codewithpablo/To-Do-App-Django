@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+    <div class="form-container">
+            <!-- Si no coloco el link a donde quiero enviar la info en action mada a la misma url o vista en donde estoy nomas -->
+            <form method="POST" class="form" >
+                {% csrf_token %}
+                    {{ form  }}
+
+                <button>Actualizar</button>
+                {{ error  }}
+            </form>
+            </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animations.css' %}">
+    <title>Get It Done</title>
+</head>
+<body>
+
+        <nav class="nav">
+            {% if user.is_authenticated %}
+            
+            <ul class="links">
+                    <li><a href="{% url 'tasks' %}">Tareas</a></li>
+                    <li>Contacto</li>
+                    <li>Nosotros</li>
+            </ul>
+            {% else %}
+                <h3>Get It Done</h3>
+            {% endif %}
+         
+
+            <div class="actions">
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="button">Cerrar sesion</a>
+                {% else %}
+                    <a href="{% url 'signup' %}" class="button">Registrarme</a>
+                    <a href="{% url 'login' %}" class="button">Iniciar sesion</a>
+                {% endif %}
+            </div>
+
+        </nav>
+
+        {% block content %}
+            <!-- Contenido cambiante -->
+        {% endblock %}
+
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+        
+</body>
+</html>

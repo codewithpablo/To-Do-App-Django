@@ -1,0 +1,53 @@
+{% if t.completado == False %}
+<div class="task-card-whole-box">
+    <div class="task-card-info">
+        <h3>{{ t.titulo }}</h3>
+        <div>
+            <p>Fecha limite:</p>
+            <span>{{ t.fecha_completado }}</span>
+        </div>
+    </div>
+    <hr style="border: none; height: 1px; background-color: #e0e0e0;">
+    
+    <div class="icons">
+            <!-- Formularios para poder borrar, actualizar tareas una tarea -->
+            <div>
+                <form method="POST" action="{% url 'delete_task' t.id %}" >
+                    {% csrf_token %}
+                        <button class="delete-task-button" >
+                            <img src="{% static 'img/trash.svg' %}" alt="trash"/>
+                            <p style=" font-size: 10px; text-align: center; font-family: Georgia, 'Times New Roman', Times, serif; color: white;">Eliminar</p>
+                        </button>
+                </form>
+            </div>
+
+            <div style="text-align: center; font-size: 10px; font-family: Georgia, 'Times New Roman', Times, serif;">
+                <a href="{% url 'update_task' t.id %}"><img src="{% static 'img/pencil-line.svg' %}" alt="trash"/></a>
+                <p>Actualizar</p>
+            </div>
+
+        
+            <div>
+                <form method="POST" action="{% url 'mark_as_complete' t.id %}" >
+                    {% csrf_token %}
+                        <button class="delete-task-button" >
+                            <img src="{% static 'img/check.svg' %}" alt="trash"/>
+                            {% if t.completado == True %}
+                                <p style=" font-size: 10px; text-align: center; font-family: Georgia, 'Times New Roman', Times, serif; color: white;">Desmarcar</p>
+                            {% else %}
+                                <p style=" font-size: 10px; text-align: center; font-family: Georgia, 'Times New Roman', Times, serif; color: white;">Marcar</p>
+                            {% endif  %}
+
+                        </button>
+                </form>
+            </div>
+    </div>
+</div>
+</div>
+
+<div>
+{% else %}
+
+</div>
+{% endif%}
+</div>
